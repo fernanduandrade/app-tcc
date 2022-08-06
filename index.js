@@ -1,5 +1,4 @@
 import { registerRootComponent } from 'expo';
-import 'gesture'
 import App from './App';
 
 
