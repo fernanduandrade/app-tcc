@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Container, LoadingIcon  } from './styles'
-import JuaLogo from '../../assets/juazeiro-logo.svg'
+import JuaLogo from '../../assets/jua-logo.svg'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation } from '@react-navigation/native'
 
