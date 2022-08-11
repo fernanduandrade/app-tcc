@@ -12,7 +12,9 @@ export default () => {
     const checkToken = async () => {
       const token = await AsyncStorage.getItem('token')
       if(!token) {
-        navigation.navigate('Home')
+        setTimeout(() => {
+          navigation.navigate('Home')
+        }, 5000)
       }
     }
     checkToken();
