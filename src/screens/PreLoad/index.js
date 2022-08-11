@@ -13,7 +13,7 @@ export default () => {
       const token = await AsyncStorage.getItem('token')
       if(!token) {
         setTimeout(() => {
-          navigation.navigate('Home')
+          navigation.navigate('MainTab')
         }, 5000)
       }
     }
