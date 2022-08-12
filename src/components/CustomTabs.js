@@ -17,17 +17,41 @@ const TabItem = styled.TouchableOpacity`
   align-items: center;
 `
 
-export default () => {
+const TabItemCenter = styled.TouchableOpacity`
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: 3px solid #7D11E5;
+  margin-top: -20px;
+`
+
+export default ({state, navigation}) => {
+  
+  const goTo = (screenName) => {
+      navigation.navigate(screenName);
+  }
+
   return (
     <TabArea>
-      <TabItem>
-        <CategoriesIcon width='24' height='24' fill='#ffffff'/>
+      <TabItem onPress={() => goTo('Categories')}>
+        <CategoriesIcon
+          style={{opacity : state.index === 0 ? 1 : 0.5}}
+          width='24' height='24' fill='#ffffff'
+        />
       </TabItem>
-      <TabItem>
-        <HomeIcon width='24' height='24' fill='#ffffff'/>
-      </TabItem>
-      <TabItem>
-        <FavoriteIcon width='24' height='24' fill='#ffffff'/>
+      <TabItemCenter onPress={() => goTo('Home')}>
+        <HomeIcon
+          width='32' height='32' fill='#7D11E5'/
+        >
+      </TabItemCenter>
+      <TabItem onPress={() => goTo('Favorites')}>
+        <FavoriteIcon
+          style={{opacity : state.index === 2 ? 1 : 0.5}}
+          width='24' height='24' fill='#ffffff'
+        />
       </TabItem>
     </TabArea>
   )

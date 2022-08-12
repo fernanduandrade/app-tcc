@@ -14,7 +14,7 @@ export default () => {
       if(!token) {
         setTimeout(() => {
           navigation.navigate('MainTab')
-        }, 5000)
+        }, 2000)
       }
     }
     checkToken();
