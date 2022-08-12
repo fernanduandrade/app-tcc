@@ -4,6 +4,8 @@ import Home from '../screens/Home/index'
 import Favorites from '../screens/Favorites/index'
 import Categories from '../screens/Categories/index'
 
+import CustomTab from '../components/CustomTabs'
+
 const Tab = createBottomTabNavigator()
 
 export default () => (
@@ -12,6 +14,7 @@ export default () => (
       headerShown: false
     }}
     initialRouteName='Home'
+    tabBar={props=><CustomTab {...props}/>}
   >
     <Tab.Screen name='Categories' component={Categories}/>
     <Tab.Screen name='Home' component={Home}/>
