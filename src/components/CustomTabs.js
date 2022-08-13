@@ -7,7 +7,7 @@ import CategoriesIcon from '../assets/categories.svg'
 
 const TabArea = styled.View`
   height: 60px;
-  background-color: #7D11E5;
+  background-color: #8910FF;
   flex-direction: row;
 `
 
@@ -24,7 +24,7 @@ const TabItemCenter = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  border: 3px solid #7D11E5;
+  border: 3px solid #8910FF;
   margin-top: -20px;
 `
 
