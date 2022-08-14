@@ -5,7 +5,7 @@ import Favorites from '../screens/Favorites/index';
 import Categories from '../screens/Categories/index';
 import Search from '../screens/Search/index';
 
-import CustomTab from '../components/CustomTabs';
+import CustomTab from '../components/CustomTab/index';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 

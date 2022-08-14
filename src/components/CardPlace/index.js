@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, PlaceImg, PlaceContent, PlaceTitle, PlaceButton, PlaceButtonText } from './styles'
+import Stars from '../Stars/index';
 
 export default ({data}) => {
   return(
@@ -7,6 +8,8 @@ export default ({data}) => {
       <PlaceImg source={{uri: 'https://static.wikia.nocookie.net/world-war-fan-fiction-series/images/e/ea/Natsu_Dragneel.png/revision/latest/scale-to-width-down/250?cb=20170802122259'}} />
       <PlaceContent>
         <PlaceTitle>teste</PlaceTitle>
+        <Stars />
+
         <PlaceButton>
           <PlaceButtonText>Ver Local</PlaceButtonText>
         </PlaceButton>

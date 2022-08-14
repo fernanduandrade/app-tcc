@@ -58,3 +58,11 @@ export const ListArea = styled.View`
   margin-top: 30px;
   margin-bottom: 30px;
 `;
+
+export const SugestionText = styled.Text`
+  margin-top: 14px;
+  width: 250px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+`;
