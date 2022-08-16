@@ -12,15 +12,7 @@ export const Scroller = styled.ScrollView`
 export const SwiperDot = styled.View`
   width: 10px;
   height: 10px;
-  background-color: #ffffff;
-  border-radius: 5px;
-  margin: 3px;
-`;
-
-export const SwiperDotActive = styled.View`
-  width: 10px;
-  height: 10px;
-  background-color: blue;
+  background-color: ${props => props.color};
   border-radius: 5px;
   margin: 3px;
 `;
@@ -84,7 +76,14 @@ export const PlaceFavoriteIcon = styled.TouchableOpacity`
   border-radius: 20px;
   justify-content: center;
   margin-left: 20px;
-  margin-top: 20px;
-  margin-right: 20px;
+  margin-top: 10px;
+  margin-right: 30px;
   align-items: center;
+`;
+
+export const BackButton = styled.TouchableOpacity`
+  position: absolute;
+  left: 0;
+  top: 10px;
+  z-index: 10;
 `;
