@@ -9,7 +9,7 @@ export const Scroller = styled.ScrollView`
   flex: 1;
 `;
 
-export const SwipeDot = styled.View`
+export const SwiperDot = styled.View`
   width: 10px;
   height: 10px;
   background-color: #ffffff;
@@ -17,7 +17,7 @@ export const SwipeDot = styled.View`
   margin: 3px;
 `;
 
-export const SwipeDotActive = styled.View`
+export const SwiperDotActive = styled.View`
   width: 10px;
   height: 10px;
   background-color: blue;
@@ -25,12 +25,12 @@ export const SwipeDotActive = styled.View`
   margin: 3px;
 `;
 
-export const SwipeItem = styled.View`
+export const SwiperItem = styled.View`
   flex: 1;
   background-color: #9D40F2;
 `;
 
-export const SwipeImg = styled.Image`
+export const SwiperImg = styled.Image`
   width: 100%;
   height: 240px;
 `;
@@ -38,7 +38,7 @@ export const SwipeImg = styled.Image`
 export const FakeSwiper = styled.View`
 `;
 
-export const PageBody = styled.View`
+export const PlaceBody = styled.View`
   background-color: #ffffff;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
@@ -46,8 +46,45 @@ export const PageBody = styled.View`
   min-height: 400px;
 `;
 
-export const PageInfo = styled.View`
+export const PlaceMap = styled.View`
 `;
 
-export const PageMap = styled.View`
+export const PlaceInfo = styled.View`
+  flex-direction: row;
+  margin-top: -30px;
+`;
+
+export const PlaceInfoContent = styled.View`
+  flex: 1;
+  justify-content: flex-end;
+`;
+
+export const PlaceImg = styled.Image`
+  width: 110px;
+  height: 110px;
+  border-radius: 20px;
+  margin-left: 30px;
+  margin-right: 20px;
+  border-width: 4px;
+  border-color: #ffffff;
+`;
+
+export const PlaceInfoName = styled.Text`
+  color: #000000;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+`;
+
+export const PlaceFavoriteIcon = styled.TouchableOpacity`
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border: 2px solid #999999;
+  border-radius: 20px;
+  justify-content: center;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+  align-items: center;
 `;

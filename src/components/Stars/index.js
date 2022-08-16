@@ -12,10 +12,10 @@ export default ({stars, showNumber}) => {
   const floor = Math.floor(stars);
   const left = stars - floor;
 
-  for(let i = 0; i < floor ; i++) {
-    s[i] = 2;
-    if(left > 0) s[i] =1;
+  for(var i = 0; i < floor ; i++) {
+    entries[i] = 2;
   }
+  if(left > 0) entries[i] =1;
   
 
   return (

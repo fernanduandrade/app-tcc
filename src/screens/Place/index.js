@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Swiper from 'react-native-swiper';
-import { Container, FakeSwiper, PageBody, PageInfo, Scroller, PlaceMap, SwipeDot, SwipeDotActive, SwipeItem, SwipeImg } from './styles';
+import { Container, FakeSwiper, PlaceBody, PlaceInfo, Scroller, PlaceMap, SwiperDot, SwiperDotActive, SwiperItem, SwiperImg, PlaceInfoName, PlaceFavoriteIcon, PlaceImg, PlaceInfoContent } from './styles';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import FavoriteIcon from '../../assets/favorite.svg';
+import Stars from '../../components/Stars/index';
 
 export default () => {
   const { navigate } = useNavigation();
@@ -14,10 +16,12 @@ export default () => {
   });
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    // get place by id e depois setPlaceInfo
-  }, []);
+  // chamar api
+  // useEffect(() => {
+  // }, []);
+  
   //const getPlaceById 
+  
   const imgTest = ['https://www.conhecaopiaui.com/images/posts/por-que-voce-deve-conhecer-a-pedra-do-castelo_8456EhkLkD.jpeg', 'http://senadorciro.com.br/wp-content/uploads/2019/11/WhatsApp-Image-2019-11-24-at-17.20.03.jpeg', 'http://senadorciro.com.br/wp-content/uploads/2019/11/WhatsApp-Image-2019-11-24-at-14.17.38.jpeg'];
   
   return (
@@ -26,28 +30,31 @@ export default () => {
       {imgTest.length > 0 ?
         <Swiper
           style={{height: 240}}
-          dot={<SwipeDot />}
-          activeDot={<SwipeDotActive /> }
+          dot={<SwiperDot />}
+          activeDot={<SwiperDotActive /> }
           paginationStyle={{top: 15, right: 15, bottom: null, left: null}}
           autoplay={false}
         >
           {imgTest.map((img, index) =>(
-            <SwipeItem key={index}>
-              <SwipeImg source={{uri: img}} resizeMode='cover'/>
-            </SwipeItem>
+            <SwiperItem key={index}>
+              <SwiperImg source={{uri: img}} resizeMode='cover'/>
+            </SwiperItem>
           ))}
         </Swiper> : 
         <FakeSwiper></FakeSwiper>
       }
-      <PageBody>
-        {/* chamar o mapa aqui */}
-        <PageInfo>
-
-        </PageInfo>
-        <PlaceMap>
-
-        </PlaceMap>
-      </PageBody>
+      <PlaceBody>
+        <PlaceInfo>
+          <PlaceImg source={{uri: imgTest[0]}}/>
+          <PlaceInfoContent>
+            <PlaceInfoName>Pedra do Castelo</PlaceInfoName>
+            <Stars stars={3.7} />
+          </PlaceInfoContent>
+        </PlaceInfo>
+        <PlaceFavoriteIcon>
+          <FavoriteIcon width='24' height='24' fill='#000000'/>
+        </PlaceFavoriteIcon>
+      </PlaceBody>
     </Scroller>
   </Container>
 )}
