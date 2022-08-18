@@ -28,6 +28,8 @@ export const SwiperImg = styled.Image`
 `;
 
 export const FakeSwiper = styled.View`
+  height: 130px;
+  background-color: #55E1F0;
 `;
 
 export const PlaceBody = styled.View`
@@ -39,6 +41,13 @@ export const PlaceBody = styled.View`
 `;
 
 export const PlaceMap = styled.View`
+  margin-top: 30px;
+  margin-left: 25px;
+  width: 360px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 7px;
+  overflow: hidden;
+  
 `;
 
 export const PlaceInfo = styled.View`
@@ -66,6 +75,14 @@ export const PlaceInfoName = styled.Text`
   font-size: 18px;
   margin-bottom: 10px;
   font-weight: bold;
+`;
+
+export const PlaceInfoDescription = styled.Text`
+  align-self: center;
+  color: #000000;
+  font-size: 14px;
+  margin-top: 20px;
+  width: 360px;
 `;
 
 export const PlaceFavoriteIcon = styled.TouchableOpacity`

@@ -21,7 +21,6 @@ export default ({data}) => {
       <PlaceContent>
         <PlaceTitle>teste</PlaceTitle>
         <Stars />
-
         <PlaceButton>
           <PlaceButtonText>Ver Local</PlaceButtonText>
         </PlaceButton>
