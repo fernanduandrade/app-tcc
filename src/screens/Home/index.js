@@ -34,6 +34,7 @@ export default () => {
       setList([]);
 
       GeoLocation.getCurrentPosition((position) => {
+        console.log(position.coords);
         setCoordinates(position.coords);
       },
       (error) => {

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Swiper from 'react-native-swiper';
-import { Container, FakeSwiper, PlaceBody, PlaceInfo, Scroller, BackButton, PlaceMap, SwiperDot, SwiperItem, SwiperImg, PlaceInfoName, PlaceFavoriteIcon, PlaceImg, PlaceInfoContent, PlaceInfoDescription } from './styles';
+import { Container, FakeSwiper, PlaceBody, PlaceInfo, Scroller, BackButton, PlaceMap, SwiperDot, SwiperItem, SwiperImg, PlaceInfoName, PlaceFavoriteIcon, PlaceImg, PlaceInfoContent, PlaceInfoDescription, PlaceMarkerImg } from './styles';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import FavoriteIcon from '../../assets/favorite.svg';
 import FavoriteFullIcon from '../../assets/favorite_full.svg';
 import BackIcon from '../../assets/back.svg';
@@ -19,7 +19,10 @@ export default () => {
   });
   const [favorited, setFavorited] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const teste = [
+    {lat: -5.169772807893075, long: -41.703290520962426},
+    {lat: -5.201745722596515, long: -41.6874175980174, img: 'https://www.conhecaopiaui.com/images/posts/por-que-voce-deve-conhecer-a-pedra-do-castelo_8456EhkLkD.jpeg'},
+  ];
   // chamar api
   // useEffect(() => {
   // }, []);
@@ -75,7 +78,19 @@ export default () => {
               latitudeDelta: 0.0922,
               longitudeDelta: 0.0421,
             }}
-          />
+          >
+            {teste.map((info, index) => (
+              <Marker
+                key={index}
+                coordinate={{ 
+                  longitude: info.long,
+                  latitude: info.lat, 
+                }}
+              >
+                <PlaceMarkerImg source={info.img ? {uri: info.img} : require('../../assets/person_location.png')}/>
+              </Marker>
+            ))}
+          </MapView>
         </PlaceMap>
       </PlaceBody>
     </Scroller>

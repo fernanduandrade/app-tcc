@@ -104,3 +104,12 @@ export const BackButton = styled.TouchableOpacity`
   top: 10px;
   z-index: 10;
 `;
+
+export const PlaceMarkerImg = styled.Image`
+  width: 54px;
+  height: 54px;
+  border-radius: 27px;
+  border-width: 4px;
+  border-color: #FFF;
+  background-color: #FFF;
+`;
