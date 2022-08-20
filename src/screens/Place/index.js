@@ -87,7 +87,7 @@ export default () => {
                   latitude: info.lat, 
                 }}
               >
-                <PlaceMarkerImg source={info.img ? {uri: info.img} : require('../../assets/person_location.png')}/>
+                <PlaceMarkerImg img={info.img} source={info.img ? {uri: info.img} : require('../../assets/red-pin.png')}/>
               </Marker>
             ))}
           </MapView>

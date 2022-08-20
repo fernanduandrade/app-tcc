@@ -46,6 +46,7 @@ export const PlaceMap = styled.View`
   width: 360px;
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.08);
   border-radius: 7px;
+  margin-bottom: 20px;
   overflow: hidden;
   
 `;
@@ -106,10 +107,9 @@ export const BackButton = styled.TouchableOpacity`
 `;
 
 export const PlaceMarkerImg = styled.Image`
-  width: 54px;
-  height: 54px;
-  border-radius: 27px;
-  border-width: 4px;
-  border-color: #FFF;
-  background-color: #FFF;
+  width: ${props => props.img ? '54px' : '29px'};
+  height: ${props => props.img ? '54px' : '38px'};
+  border-radius: ${props => props.img ? '27px' : '0px'};
+  border-width: ${props => props.img ? '4px' : '0px'}; ;
+  border-color:  ${props => props.img ? '#FFF' : 'transparent'};
 `;
