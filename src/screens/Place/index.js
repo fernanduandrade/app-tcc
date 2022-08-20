@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Swiper from 'react-native-swiper';
-import { Container, FakeSwiper, PlaceBody, PlaceInfo, Scroller, BackButton, PlaceMap, SwiperDot, SwiperItem, SwiperImg, PlaceInfoName, PlaceFavoriteIcon, PlaceImg, PlaceInfoContent, PlaceInfoDescription, PlaceMarkerImg } from './styles';
+import { Container, FakeSwiper, PlaceBody, PlaceInfo, Scroller, BackButton, PlaceMap, SwiperDot, SwiperItem, SwiperImg, PlaceInfoName, PlaceFavoriteIcon, PlaceImg, PlaceInfoContent, PlaceInfoDescription, PlaceMarkerImg, ContactButton, ContactText, Contact } from './styles';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import MapView, { Marker } from 'react-native-maps';
 import FavoriteIcon from '../../assets/favorite.svg';
 import FavoriteFullIcon from '../../assets/favorite_full.svg';
 import BackIcon from '../../assets/back.svg';
+import WhatAppIcon from '../../assets/whatapp-icon.svg';
 import Stars from '../../components/Stars/index';
 
 export default () => {
@@ -67,8 +68,14 @@ export default () => {
         </PlaceFavoriteIcon>
         </PlaceInfo>
         <PlaceInfoDescription>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </PlaceInfoDescription>
+        <Contact>
+          <ContactButton>
+            <WhatAppIcon width='15' height='15' fill='#ffffff' />
+            <ContactText>Whatapp</ContactText>
+          </ContactButton>
+        </Contact>
         <PlaceMap>
           <MapView
             style={{width: 360, height: 280}}
@@ -79,17 +86,22 @@ export default () => {
               longitudeDelta: 0.0421,
             }}
           >
-            {teste.map((info, index) => (
-              <Marker
-                key={index}
+            <Marker
+              coordinate={{ 
+                longitude: -41.703290520962426,
+                latitude: -5.169772807893075, 
+              }}
+            >
+              <PlaceMarkerImg img={teste[0].img} source={teste[0].img ? {uri: teste[0].img} : require('../../assets/red-pin.png')}/>
+            </Marker>
+            <Marker
                 coordinate={{ 
-                  longitude: info.long,
-                  latitude: info.lat, 
+                  longitude: -41.6874175980174,
+                  latitude: -5.201745722596515, 
                 }}
-              >
-                <PlaceMarkerImg img={info.img} source={info.img ? {uri: info.img} : require('../../assets/red-pin.png')}/>
-              </Marker>
-            ))}
+            >
+              <PlaceMarkerImg img={teste[1].img} source={teste[1].img ? {uri: teste[1].img} : require('../../assets/red-pin.png')}/>
+            </Marker>
           </MapView>
         </PlaceMap>
       </PlaceBody>

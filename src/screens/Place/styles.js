@@ -41,7 +41,7 @@ export const PlaceBody = styled.View`
 `;
 
 export const PlaceMap = styled.View`
-  margin-top: 30px;
+  margin-top: 20px;
   margin-left: 25px;
   width: 360px;
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.08);
@@ -112,4 +112,25 @@ export const PlaceMarkerImg = styled.Image`
   border-radius: ${props => props.img ? '27px' : '0px'};
   border-width: ${props => props.img ? '4px' : '0px'}; ;
   border-color:  ${props => props.img ? '#FFF' : 'transparent'};
+`;
+
+export const Contact = styled.TouchableOpacity`
+  margin-top: 10px;
+  margin-left: 69%;
+  width: 100px;
+`;
+
+export const ContactButton = styled.View`
+  align-items: center;
+  padding: 2px;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  flex-direction: row;
+  background-color: #00BC10;
+`;
+
+export const ContactText = styled.Text`
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
 `;
