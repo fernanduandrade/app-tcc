@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Scroller, SearchArea, SearchInput, LoadingIcon } from './styles';
+import { Container, Scroller, SearchArea, SearchInput, LoadingIcon, Search } from './styles';
 import SearchIcon from '../../assets/search.svg';
 
 export default () => {
@@ -15,7 +15,9 @@ export default () => {
             placeholder='Pesquise por algum local'
             placeholderTextColor='#ffffff'
           />
-          <SearchIcon width='26' height='26' fill='#ffffff' />
+          <Search>
+            <SearchIcon width='26' height='26' fill='#ffffff' />
+          </Search>
         </SearchArea>
       <Scroller>
 

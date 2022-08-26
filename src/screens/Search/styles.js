@@ -10,7 +10,12 @@ export const Scroller = styled.ScrollView`
   margin-top: 10px;
 `;
 
-export const LocationArea = styled.View`
+export const Search = styled.TouchableOpacity`
+  width: 24px;
+  height: 24px;
+`;
+
+export const SearchArea = styled.View`
   border-radius: 30px;
   height: 60px;
   background-color: #8910FF;
@@ -21,7 +26,7 @@ export const LocationArea = styled.View`
   margin-top: 30px;
 `;
 
-export const LocationInput = styled.TextInput`
+export const SearchInput = styled.TextInput`
   flex: 1;
   font-size: 16px;
   color: #ffffff;
