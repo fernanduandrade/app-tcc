@@ -1,10 +1,30 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React from 'react';
+import { Container, Scroller, ListCard } from './styles';
+import CardPlace from '../../components/CardPlace/index';
 
 export default () => {
   return (
-    <View>
-      <Text>Oi</Text>
-    </View>
+    <Container>
+      <Scroller>
+        <ListCard>
+          <CardPlace>
+          </CardPlace>
+          <CardPlace>
+          </CardPlace>
+          <CardPlace>
+          </CardPlace>
+          <CardPlace>
+          </CardPlace>
+          <CardPlace>
+          </CardPlace>
+          <CardPlace>
+          </CardPlace>
+          <CardPlace>
+          </CardPlace>
+          <CardPlace>
+          </CardPlace>
+        </ListCard>
+      </Scroller>
+    </Container>
   )
 }
