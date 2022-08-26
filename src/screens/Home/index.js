@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { Container, Scroller, Header, HeaderTitle, SearchButton,LocationArea, LocationInput, LocationFinder, LoadingIcon, ListArea, SugestionText } from './styles';
+import { Container, Scroller, Header, HeaderTitle, SearchButton, LoadingIcon, ListArea, SugestionText } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { request, PERMISSIONS } from 'react-native-permissions';
 import GeoLocation from 'react-native-geolocation-service';
@@ -7,7 +7,6 @@ import { Platform, RefreshControl } from 'react-native';
 import CardPlace from '../../components/CardPlace/index';
 
 import SearchIcon from '../../assets/search.svg';
-import LocationIcon from '../../assets/my_location.svg';
 
 export default () => {
   
@@ -64,18 +63,6 @@ export default () => {
             <SearchIcon width='26' height='26' fill='#ffffff' />
           </SearchButton>
         </Header>
-
-        <LocationArea>
-          <LocationInput
-            value={locationText}
-            onChangeText={text => setLocationText(text)}
-            placeholder='Onde você está'
-            placeholderTextColor='#ffffff'
-          />
-          <LocationFinder onPress={handleLocationFinder}>
-            <LocationIcon width='24' height='24' fill='#ffffff' />
-          </LocationFinder>
-        </LocationArea>
 
         {loading && <LoadingIcon size='large' color='#ffffff' />}
 

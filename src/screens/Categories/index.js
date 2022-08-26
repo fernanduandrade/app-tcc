@@ -1,10 +1,31 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Container, CategoryArea, CategoryText, Scroller, Category } from './styles'
 
 export default () => {
   return (
-    <View>
-      <Text>Oi</Text>
-    </View>
+    <Container>
+      <Scroller>
+        <Category>
+          <CategoryArea>
+            <CategoryText>Restaurantes</CategoryText>
+          </CategoryArea>
+        </Category>
+        <Category>
+          <CategoryArea>
+            <CategoryText>Eventos</CategoryText>
+          </CategoryArea>
+        </Category>
+        <Category>
+          <CategoryArea>
+            <CategoryText>Bares</CategoryText>
+          </CategoryArea>
+        </Category>
+        <Category>
+          <CategoryArea>
+            <CategoryText>Pontos turisticos</CategoryText>
+          </CategoryArea>
+        </Category>
+      </Scroller>
+    </Container>
   )
 }
