@@ -1,10 +1,10 @@
 class BaseApi {
   constructor(axios, baseAddress) {
-    this.#_axios = axios;
-    this.#_baseAddress = baseAddress;
+    this.axios = axios;
+    this.baseAddress = baseAddress;
   }
 
-  get = async () => await this.#_axios.get(this.#_baseAddress);
+  get = async () => await this.axios.get(this.baseAddress);
 }
 
 export { BaseApi };

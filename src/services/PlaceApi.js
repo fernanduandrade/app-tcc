@@ -6,13 +6,18 @@ class PlaceApi extends BaseApi {
   }
 
   getFiltered = async (search = null) => {
-    const filterUrl = `${this.#_baseAdddress}/?search=${search}`;
-    return  this.#_axios.get(filterUrl)
+    const filterUrl = `${this.baseAdddress}/?search=${search}`;
+    return  this.axios.get(filterUrl)
   }
 
   getById = async (placeId) => {
-    const filterUrl = `${this.#_baseAdddress}/${placeId}`;
-    return await this.#_axios.get(filterUrl);
+    const filterUrl = `${this.baseAdddress}/${placeId}`;
+    return await this.axios.get(filterUrl);
+  }
+
+  getByCategory = async (categoryId) => {
+    const filterUrl = `${this.baseAdddress}/?category=${categoryId}`;
+    return await this.axios.get(filterUrl);
   }
 }
 
