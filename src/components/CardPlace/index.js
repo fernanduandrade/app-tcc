@@ -6,21 +6,24 @@ import Stars from '../Stars/index';
 export default ({data}) => {
   
   const { navigate } = useNavigation();
+  
+  const placeImgs = data.img_links.split(',');
+  const placeImg = placeImgs[Math.floor(Math.random()*placeImgs.length)];
 
   const handleClick = () => {
     navigate('Place', {
-      id: 10,
-      name: 'teste',
-      stars: 5
+      id: data.title,
+      name: data.title,
+      stars: data.start
     });
   }
 
   return(
     <Card onPress={() => handleClick()}>
-      <PlaceImg source={{uri: 'https://static.wikia.nocookie.net/world-war-fan-fiction-series/images/e/ea/Natsu_Dragneel.png/revision/latest/scale-to-width-down/250?cb=20170802122259'}} />
+      <PlaceImg source={{uri: placeImg}} />
       <PlaceContent>
-        <PlaceTitle>teste</PlaceTitle>
-        <Stars />
+        <PlaceTitle>{data.title}</PlaceTitle>
+        <Stars stars={data.star} />
         <PlaceButton>
           <PlaceButtonText>Ver Local</PlaceButtonText>
         </PlaceButton>

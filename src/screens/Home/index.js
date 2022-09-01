@@ -7,6 +7,7 @@ import { Platform, RefreshControl } from 'react-native';
 import CardPlace from '../../components/CardPlace/index';
 
 import SearchIcon from '../../assets/search.svg';
+import { apiInstance } from '../../services/api';
 
 export default () => {
   
@@ -15,7 +16,7 @@ export default () => {
   const [locationText, setLocationText] = useState('');
   const [coordinates, setCoordinates] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [list, setList] = useState([]);
+  const [places, setPlaces] = useState([]);
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -29,11 +30,8 @@ export default () => {
      
     if(result === 'granted') {
       setLoading(true);
-      setLocationText('');
-      setList([]);
 
       GeoLocation.getCurrentPosition((position) => {
-        console.log(position.coords);
         setCoordinates(position.coords);
       },
       (error) => {
@@ -42,12 +40,14 @@ export default () => {
       { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 });
     }
 
-    // getPlaces();
   };
+  
+  const getPlaces = async () => await apiInstance.Place.get();
 
-  const onRefresh = () => {
+  const onRefresh = async () => {
     setRefreshing(false);
-    // getPlaces();
+    const response = await getPlaces();
+    setPlaces(response.data);
   }
 
   return (
@@ -69,16 +69,9 @@ export default () => {
         <SugestionText>Sugestões</SugestionText>
 
         <ListArea>
-          <CardPlace>
-          </CardPlace>
-          <CardPlace>
-          </CardPlace>
-          <CardPlace>
-          </CardPlace>
-          <CardPlace>
-          </CardPlace>
-          <CardPlace>
-          </CardPlace>
+        {places.map((place, index) => (
+          <CardPlace data={place} key={index} />
+        ))}
         </ListArea>
 
       </Scroller>
