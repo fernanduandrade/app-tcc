@@ -1,10 +1,9 @@
 import axios from 'axios';
 import { PlaceApi } from './PlaceApi';
 import { CategoryApi } from './CategoryApi';
-import { REACT_APP_API_URI } from '@env';
 
 const api = axios.create({
-  baseURL: `${REACT_APP_API_URI}`,
+  baseURL: 'http://ec2-52-90-52-49.compute-1.amazonaws.com/',
   headers: { 
     'Content-Type': 'application/json',
   }

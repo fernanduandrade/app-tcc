@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Scroller, Header, HeaderTitle, SearchButton, LoadingIcon, ListArea, SugestionText } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { request, PERMISSIONS } from 'react-native-permissions';
@@ -19,6 +19,10 @@ export default () => {
   const [places, setPlaces] = useState([]);
 
   const [refreshing, setRefreshing] = useState(false);
+
+  useEffect(() => {
+    getPlaces();
+  } ,[])
 
   const handleLocationFinder = async () => {
     setCoordinates(null);
@@ -42,12 +46,13 @@ export default () => {
 
   };
   
-  const getPlaces = async () => await apiInstance.Place.get();
+  const getPlaces = async () => {
+    const response = await apiInstance.Place.get();
+    setPlaces(response.data);
+  }
 
   const onRefresh = async () => {
-    setRefreshing(false);
-    const response = await getPlaces();
-    setPlaces(response.data);
+    await getPlaces();
   }
 
   return (

@@ -1,30 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, CategoryArea, CategoryText, Scroller, Category } from './styles'
+import { apiInstance } from '../../services/api';
 
 export default () => {
+  
+  const [categories, setCategories] = useState([]);
+  
+  useEffect(() => {
+    async function getCategories() {
+      const response = await apiInstance.Category.get();
+      console.log(response);
+      setCategories(response.data);
+    }
+
+    getCategories();
+  } ,[]);
+
   return (
     <Container>
       <Scroller>
-        <Category>
-          <CategoryArea>
-            <CategoryText>Restaurantes</CategoryText>
-          </CategoryArea>
-        </Category>
-        <Category>
-          <CategoryArea>
-            <CategoryText>Eventos</CategoryText>
-          </CategoryArea>
-        </Category>
-        <Category>
-          <CategoryArea>
-            <CategoryText>Bares</CategoryText>
-          </CategoryArea>
-        </Category>
-        <Category>
-          <CategoryArea>
-            <CategoryText>Pontos turisticos</CategoryText>
-          </CategoryArea>
-        </Category>
+        {categories.map((category, index) => (
+          <Category key={index} >
+            <CategoryArea>
+              <CategoryText>{category.category_name}</CategoryText>
+            </CategoryArea>
+          </Category>
+        ))}
       </Scroller>
     </Container>
   )
