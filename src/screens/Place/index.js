@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Swiper from 'react-native-swiper';
 import { Container, FakeSwiper, PlaceBody, PlaceInfo, Scroller, BackButton, PlaceMap, SwiperDot, SwiperItem, SwiperImg, PlaceInfoName, PlaceFavoriteIcon, PlaceImg, PlaceInfoContent, PlaceInfoDescription, PlaceMarkerImg, ContactButton, ContactText, Contact } from './styles';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -8,11 +8,11 @@ import FavoriteFullIcon from '../../assets/favorite_full.svg';
 import BackIcon from '../../assets/back.svg';
 import WhatAppIcon from '../../assets/whatapp-icon.svg';
 import Stars from '../../components/Stars/index';
-import { apiInstance } from '../../services/api';
-import { randomImg, splitImgs } from '../../utils/handleImgs';
+import { randomImg } from '../../utils/handleImgs';
 import formatCoordinates from '../../utils/formatCoordinates';
-
+import { UserContext } from './../../contexts/UserContext';
 export default () => {
+
   const { goBack } = useNavigation();
   const route = useRoute();
   const [favorited, setFavorited] = useState(false);
@@ -25,16 +25,10 @@ export default () => {
     title: route.params.title,
     coords: formatCoordinates(route.params.coordinate),
   });
-  console.log(place.img);
+  const reducer = useContext(UserContext);
   const [loading, setLoading] = useState(false);
-  const teste = [
-    {lat: -5.169772807893075, long: -41.703290520962426},
-    {lat: -5.201745722596515, long: -41.6874175980174, img: 'https://www.conhecaopiaui.com/images/posts/por-que-voce-deve-conhecer-a-pedra-do-castelo_8456EhkLkD.jpeg'},
-  ];
 
-  
   const handleFavoriteClick = () => setFavorited(!favorited);
-  const imgTest = ['https://www.conhecaopiaui.com/images/posts/por-que-voce-deve-conhecer-a-pedra-do-castelo_8456EhkLkD.jpeg', 'http://senadorciro.com.br/wp-content/uploads/2019/11/WhatsApp-Image-2019-11-24-at-17.20.03.jpeg', 'http://senadorciro.com.br/wp-content/uploads/2019/11/WhatsApp-Image-2019-11-24-at-14.17.38.jpeg'];
 
   return (
     <Container>
@@ -92,8 +86,8 @@ export default () => {
             >
               <Marker
                 coordinate={{ 
-                  longitude: -41.703290520962426,
-                  latitude: -5.169772807893075, 
+                  longitude: reducer.state.coordinates.longitude,
+                  latitude: reducer.state.coordinates.latitude, 
                 }}
               >
                 <PlaceMarkerImg source={require('../../assets/red-pin.png')}/>

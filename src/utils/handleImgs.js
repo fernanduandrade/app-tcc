@@ -1,5 +1,4 @@
 export const splitImgs = (imgLinks) => {
-  console.log(imgLinks);
   return imgLinks.split(',');
 }
 

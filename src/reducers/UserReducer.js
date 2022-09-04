@@ -1,13 +1,13 @@
 export const initialState = {
   favorites: [],
-}
+  coordinates: null,
+};
 
 export const UserReducer = (state, action) => {
   switch (action.type) {
-    case 'setFavorite':
-      // setar os lugares favoritos
-      break;
+    case 'SET_COORDINATES':
+      return {...state, coordinates: action.payload};
     default:
-      return state
+      return state;
   }
 }

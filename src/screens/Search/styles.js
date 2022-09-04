@@ -3,11 +3,13 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   background-color: #9D40F2;
+  align-items: center;
 `;
 
 export const Scroller = styled.ScrollView`
   flex: 1;
-  margin-top: 10px;
+  margin-top: 35px;
+  width: 380px;
 `;
 
 export const Search = styled.TouchableOpacity`

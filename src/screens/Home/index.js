@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Container, Scroller, Header, HeaderTitle, SearchButton, LoadingIcon, ListArea, SugestionText } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { request, PERMISSIONS } from 'react-native-permissions';
@@ -8,24 +8,19 @@ import CardPlace from '../../components/CardPlace/index';
 
 import SearchIcon from '../../assets/search.svg';
 import { apiInstance } from '../../services/api';
+import { UserContext } from './../../contexts/UserContext';
 
 export default () => {
   
   const navigation = useNavigation();
-
-  const [locationText, setLocationText] = useState('');
-  const [coordinates, setCoordinates] = useState(null);
+  const reducer = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const [places, setPlaces] = useState([]);
 
   const [refreshing, setRefreshing] = useState(false);
 
-  useEffect(() => {
-    getPlaces();
-  } ,[])
-
   const handleLocationFinder = async () => {
-    setCoordinates(null);
+    
     const result = await request(
       Platform.OS === 'ios' ?
         PERMISSIONS.IOS.LOCATION_WHEN_IN_USE :
@@ -36,7 +31,11 @@ export default () => {
       setLoading(true);
 
       GeoLocation.getCurrentPosition((position) => {
-        setCoordinates(position.coords);
+        reducer.dispatch({
+          type: 'SET_COORDINATES',
+          payload: position.coords,
+        });
+        setLoading(false);
       },
       (error) => {
         console.log(error.code, error.message);
@@ -56,6 +55,11 @@ export default () => {
     await getPlaces();
   }
 
+  useEffect(() => {
+    getPlaces();
+    handleLocationFinder();
+  } , []);
+
   return (
     <Container>
       <Scroller refreshControl={
@@ -72,7 +76,7 @@ export default () => {
 
         {loading && <LoadingIcon size='large' color='#ffffff' />}
 
-        <SugestionText>Sugestões</SugestionText>
+        <SugestionText>Sugestões 😉</SugestionText>
 
         <ListArea>
         {places.map((place, index) => (
