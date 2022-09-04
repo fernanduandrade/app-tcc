@@ -48,6 +48,7 @@ export default () => {
   
   const getPlaces = async () => {
     const response = await apiInstance.Place.get();
+    response.data.length = 5;
     setPlaces(response.data);
   }
 
