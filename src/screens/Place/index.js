@@ -8,34 +8,43 @@ import FavoriteFullIcon from '../../assets/favorite_full.svg';
 import BackIcon from '../../assets/back.svg';
 import WhatAppIcon from '../../assets/whatapp-icon.svg';
 import Stars from '../../components/Stars/index';
+import { apiInstance } from '../../services/api';
+import { randomImg, splitImgs } from '../../utils/handleImgs';
+import formatCoordinates from '../../utils/formatCoordinates';
 
 export default () => {
   const { goBack } = useNavigation();
   const route = useRoute();
 
-  const [placeInfo, setPlaceInfo] = useState({
-    id: route.params.id,
-    name: route.params.name,
-    stars: route.params.stars
-  });
+  const [placeId, setPlaceId] = useState(route.params.id);
   const [favorited, setFavorited] = useState(false);
+  const [place, setPlace] = useState();
+  const [coords, setCoords] = useState();
+  const [imgs, setImgs] = useState();
+  const [placeImg, setPlaceImg] = useState();
+  
   const [loading, setLoading] = useState(false);
   const teste = [
     {lat: -5.169772807893075, long: -41.703290520962426},
     {lat: -5.201745722596515, long: -41.6874175980174, img: 'https://www.conhecaopiaui.com/images/posts/por-que-voce-deve-conhecer-a-pedra-do-castelo_8456EhkLkD.jpeg'},
   ];
   // chamar api
-  // useEffect(() => {
-  // }, []);
+
+  useEffect(() => {
+    const response = apiInstance.Place.getById(placeId);
+    setPlace(response.data);
+    setCoords(formatCoordinates(response.data.coordinate));
+    setImgs(splitImgs(response.data.imgs_links));
+    setPlaceImg(randomImg(imgs));
+  }, []);
   
-  //const getPlaceById 
   const handleFavoriteClick = () => setFavorited(!favorited);
   const imgTest = ['https://www.conhecaopiaui.com/images/posts/por-que-voce-deve-conhecer-a-pedra-do-castelo_8456EhkLkD.jpeg', 'http://senadorciro.com.br/wp-content/uploads/2019/11/WhatsApp-Image-2019-11-24-at-17.20.03.jpeg', 'http://senadorciro.com.br/wp-content/uploads/2019/11/WhatsApp-Image-2019-11-24-at-14.17.38.jpeg'];
 
   return (
   <Container>
     <Scroller>
-      {imgTest.length > 0 ?
+      {imgs.length > 0 ?
         <Swiper
           style={{height: 240}}
           dot={<SwiperDot color={'#ffffff'} />}
@@ -43,7 +52,7 @@ export default () => {
           paginationStyle={{top: 15, right: 15, bottom: null, left: null}}
           autoplay={false}
         >
-          {imgTest.map((img, index) =>(
+          {imgs.map((img, index) =>(
             <SwiperItem key={index}>
               <SwiperImg source={{uri: img}} resizeMode='cover'/>
             </SwiperItem>
@@ -53,11 +62,11 @@ export default () => {
       }
       <PlaceBody>
         <PlaceInfo>
-          <PlaceImg source={{uri: imgTest[0]}}/>
+          <PlaceImg source={{uri: placeImg}}/>
           
           <PlaceInfoContent>
-            <PlaceInfoName>Pedra do Castelo</PlaceInfoName>
-            <Stars stars={3.7} />
+            <PlaceInfoName>{place.title}</PlaceInfoName>
+            <Stars stars={place.star} />
           </PlaceInfoContent>
           <PlaceFavoriteIcon onPress={() => handleFavoriteClick()}>
             {favorited ?
@@ -68,7 +77,7 @@ export default () => {
         </PlaceFavoriteIcon>
         </PlaceInfo>
         <PlaceInfoDescription>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            {place.description}
         </PlaceInfoDescription>
         <Contact>
           <ContactButton>
@@ -92,15 +101,15 @@ export default () => {
                 latitude: -5.169772807893075, 
               }}
             >
-              <PlaceMarkerImg img={teste[0].img} source={teste[0].img ? {uri: teste[0].img} : require('../../assets/red-pin.png')}/>
+              <PlaceMarkerImg source={require('../../assets/red-pin.png')}/>
             </Marker>
             <Marker
                 coordinate={{ 
-                  longitude: -41.6874175980174,
-                  latitude: -5.201745722596515, 
+                  longitude: coords.longitude,
+                  latitude: coords.latitude, 
                 }}
             >
-              <PlaceMarkerImg img={teste[1].img} source={teste[1].img ? {uri: teste[1].img} : require('../../assets/red-pin.png')}/>
+              <PlaceMarkerImg img={placeImg} source={placeImg}/>
             </Marker>
           </MapView>
         </PlaceMap>

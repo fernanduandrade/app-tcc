@@ -2,13 +2,14 @@ import React from 'react';
 import { Card, PlaceImg, PlaceContent, PlaceTitle, PlaceButton, PlaceButtonText } from './styles'
 import { useNavigation } from '@react-navigation/native';
 import Stars from '../Stars/index';
+import { randomImg, splitImgs } from '../../utils/handleImgs';
 
 export default ({data}) => {
   
   const { navigate } = useNavigation();
   
-  const placeImgs = data.img_links.split(',');
-  const placeImg = placeImgs[Math.floor(Math.random()*placeImgs.length)];
+  const imgs = splitImgs(data.img_links);
+  const placeImg = randomImg(imgs);
 
   const handleClick = () => {
     navigate('Place', {
