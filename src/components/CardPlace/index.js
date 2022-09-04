@@ -12,11 +12,7 @@ export default ({data}) => {
   const placeImg = randomImg(imgs);
 
   const handleClick = () => {
-    navigate('Place', {
-      id: data.id,
-      name: data.title,
-      stars: data.start
-    });
+    navigate('Place', data);
   }
 
   return(
