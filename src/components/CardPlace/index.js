@@ -12,7 +12,7 @@ export default ({data}) => {
 
   const handleClick = () => {
     navigate('Place', {
-      id: data.title,
+      id: data.id,
       name: data.title,
       stars: data.start
     });
