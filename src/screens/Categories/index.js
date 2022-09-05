@@ -17,8 +17,8 @@ export default () => {
 
 	useEffect(() => {
 		async function getCategories() {
-      const response = await apiInstance.Category.get();
-      setCategories(response.data);
+      const { data } = await apiInstance.Category.get();
+      setCategories(data);
     }
 
     getCategories();

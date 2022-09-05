@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Swiper from 'react-native-swiper';
 import { Container, FakeSwiper, PlaceBody, PlaceInfo, Scroller, BackButton, PlaceMap, SwiperDot, SwiperItem, SwiperImg, PlaceInfoName, PlaceFavoriteIcon, PlaceImg, PlaceInfoContent, PlaceInfoDescription, PlaceMarkerImg, ContactButton, ContactText, Contact } from './styles';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -26,7 +26,6 @@ export default () => {
     coords: formatCoordinates(route.params.coordinate),
   });
   const reducer = useContext(UserContext);
-  const [loading, setLoading] = useState(false);
 
   const handleFavoriteClick = () => setFavorited(!favorited);
 

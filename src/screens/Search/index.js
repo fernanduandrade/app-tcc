@@ -9,22 +9,30 @@ export default () => {
 
   const [locationText, setLocationText] = useState('');
   const [places, setPlaces] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const route = useRoute();
 
   const [category, setCategory] = useState(route.params?.id);
 
   const getPlacesByCategory = async () => {
-    const response = await apiInstance.Place.getByCategory(category);
-    setPlaces(response.data);
+    setLoading(true);
+    const { data } = await apiInstance.Place.getByCategory(category);
+    setPlaces(data);
+    setLoading(false);
   }
+  
+  const getFilteredPlaces = async () => {
+    setLoading(true);
+    const { data } = await apiInstance.Place.getFiltered(locationText);
+    setPlaces(data);
+    setLoading(false);
+  }
+
   useEffect(() => {
     category ? getPlacesByCategory() : null;
   }, []);
-
-  const getFilteredPlaces = async () => {
-    const response = await apiInstance.Place.getFiltered(locationText);
-    setPlaces(response.data);
-  }
+  
   return (
     <Container>
       <SearchArea>
@@ -39,6 +47,7 @@ export default () => {
           </Search>
       </SearchArea>
       <Scroller>
+        {loading && <LoadingIcon size='large' color='#ffffff' />}
         {places.map((place, index) => (
           <CardPlace data={place} key={index} />
         ))}

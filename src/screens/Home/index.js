@@ -14,7 +14,7 @@ export default () => {
   
   const navigation = useNavigation();
   const reducer = useContext(UserContext);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [places, setPlaces] = useState([]);
 
   const [refreshing, setRefreshing] = useState(false);
@@ -28,7 +28,6 @@ export default () => {
     );
      
     if(result === 'granted') {
-      setLoading(true);
 
       GeoLocation.getCurrentPosition((position) => {
         reducer.dispatch({
@@ -46,9 +45,11 @@ export default () => {
   };
   
   const getPlaces = async () => {
-    const response = await apiInstance.Place.get();
-    response.data.length = 5;
-    setPlaces(response.data);
+    setLoading(true);
+    const { data } = await apiInstance.Place.get();
+    data.length = 5;
+    setPlaces(data);
+    setLoading(false);
   }
 
   const onRefresh = async () => {
@@ -74,11 +75,10 @@ export default () => {
           </SearchButton>
         </Header>
 
-        {loading && <LoadingIcon size='large' color='#ffffff' />}
-
         <SugestionText>Sugestões 😉</SugestionText>
 
         <ListArea>
+        {loading && <LoadingIcon size='large' color='#ffffff' />}
         {places.map((place, index) => (
           <CardPlace data={place} key={index} />
         ))}
