@@ -9,7 +9,7 @@ export default () => {
 
   const [locationText, setLocationText] = useState('');
   const [places, setPlaces] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const route = useRoute();
 
@@ -24,6 +24,7 @@ export default () => {
   
   const getFilteredPlaces = async () => {
     setLoading(true);
+    setPlaces([]);
     const { data } = await apiInstance.Place.getFiltered(locationText);
     setPlaces(data);
     setLoading(false);
