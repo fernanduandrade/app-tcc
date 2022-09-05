@@ -11,6 +11,8 @@ import Stars from '../../components/Stars/index';
 import { randomImg } from '../../utils/handleImgs';
 import formatCoordinates from '../../utils/formatCoordinates';
 import { UserContext } from './../../contexts/UserContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 export default () => {
 
   const { goBack } = useNavigation();
@@ -24,11 +26,27 @@ export default () => {
     star: route.params.star,
     title: route.params.title,
     coords: formatCoordinates(route.params.coordinate),
+    favorited: false,
   });
   const reducer = useContext(UserContext);
 
-  const handleFavoriteClick = () => setFavorited(!favorited);
-
+  const handleFavoriteClick = async () => {
+    const existingPlaces = await AsyncStorage.getItem('places');
+    let newPlace = JSON.parse(existingPlaces);
+    if(!newPlace) {
+      newPlace = [];
+      place.favorited = true;
+      newPlace.push(place);
+      await AsyncStorage.setItem('places', JSON.stringify(newPlace))
+        .then( ()=>{
+        console.log('salvo com sucesso');
+        })
+        .catch( ()=>{
+        console.log('erro ao salvar o lugar.');
+      });
+    }
+    setFavorited(!favorited)
+  };
   return (
     <Container>
       <Scroller>
@@ -57,7 +75,7 @@ export default () => {
               <Stars stars={place.star} />
             </PlaceInfoContent>
             <PlaceFavoriteIcon onPress={() => handleFavoriteClick()}>
-              {favorited ?
+              {favorited || place.favorited ?
               <FavoriteFullIcon width='24' height='24' fill='#ff0000'/> :
               <FavoriteIcon width='24' height='24' fill='#ff0000'/>
               }

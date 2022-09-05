@@ -8,16 +8,15 @@ export default ({data}) => {
   
   const { navigate } = useNavigation();
   
-  const imgs = splitImgs(data.img_links);
-  const placeImg = randomImg(imgs);
-
+  console.log('teste', data);
+  
   const handleClick = () => {
     navigate('Place', data);
   }
 
   return(
     <Card onPress={() => handleClick()}>
-      <PlaceImg source={{uri: placeImg}} />
+      <PlaceImg source={{uri: data.img}} />
       <PlaceContent>
         <PlaceTitle>{data.title}</PlaceTitle>
         <Stars stars={data.star} />
