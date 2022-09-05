@@ -12,7 +12,8 @@ const { Navigator, Screen } = createBottomTabNavigator();
 export default () => (
   <Navigator
     screenOptions={{
-      headerShown: false
+      headerShown: false,
+      unmountOnBlur: true
     }}
     initialRouteName='Home'
     tabBar={props=><CustomTab {...props}/>}
