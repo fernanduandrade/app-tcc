@@ -12,7 +12,6 @@ export default () => {
       const localPlaces = await AsyncStorage.getItem('places');
       const json = JSON.parse(localPlaces);
       setPlaces(json);
-      console.log(typeof json);
     }
     fetchLocalData();
   }, []);

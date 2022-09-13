@@ -21,12 +21,12 @@ export default () => {
   const [place, setPlace] = useState({
     id: route.params.id,
     description: route.params.description,
-    img_links: route.params.img_links.split(','),
-    img: randomImg(route.params.img_links.split(',')),
+    img_links: Array.isArray(route.params.img_links) ? [] : route.params.img_links.split(','),
+    img: Array.isArray(route.params.img_links) ? route.params.img : randomImg(route.params.img_links.split(',')),
     star: route.params.star,
     title: route.params.title,
-    coords: formatCoordinates(route.params.coordinate),
-    favorited: false,
+    coords: typeof route.params.coords === 'object' ? route.params.coords : formatCoordinates(route.params.coordinate),
+    favorited: route.params.favorited ? true : false,
   });
   const reducer = useContext(UserContext);
 
