@@ -7,8 +7,6 @@ export default ({data}) => {
   
   const { navigate } = useNavigation();
   
-  console.log('teste', data);
-  
   const handleClick = () => {
     navigate('Place', data);
   }

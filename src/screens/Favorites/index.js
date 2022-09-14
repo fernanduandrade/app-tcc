@@ -6,7 +6,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default () => {
 
   const [places, setPlaces] = useState([]);
-
   useEffect(() => {
     async function fetchLocalData() {
       const localPlaces = await AsyncStorage.getItem('places');

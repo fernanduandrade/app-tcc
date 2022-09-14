@@ -45,6 +45,21 @@ export default () => {
         console.log('erro ao salvar o lugar.');
       });
     }
+    else if(newPlace) {
+      const placeExits = newPlace.filter(pc => pc.id === place.id);
+      if(!placeExits.length) {
+        place.favorited = true;
+        newPlace.push(place);
+        await AsyncStorage.setItem('places', JSON.stringify(newPlace))
+        .then( ()=>{
+          console.log('salvo com sucesso');
+        })
+        .catch( ()=>{
+          console.log('erro ao salvar o lugar.');
+        });
+        setFavorited(!favorited)
+      }
+    }
     setFavorited(!favorited)
   };
   return (
