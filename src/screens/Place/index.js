@@ -17,7 +17,7 @@ export default () => {
 
   const { goBack } = useNavigation();
   const route = useRoute();
-  const [favorited, setFavorited] = useState(false);
+  
   const [place, setPlace] = useState({
     id: route.params.id,
     description: route.params.description,
@@ -28,6 +28,7 @@ export default () => {
     coords: typeof route.params.coords === 'object' ? route.params.coords : formatCoordinates(route.params.coordinate),
     favorited: route.params.favorited ? true : false,
   });
+  const [favorited, setFavorited] = useState(place.favorited || false);
   const reducer = useContext(UserContext);
 
   const handleFavoriteClick = async () => {
@@ -57,9 +58,9 @@ export default () => {
         .catch( ()=>{
           console.log('erro ao salvar o lugar.');
         });
-        setFavorited(!favorited)
       }
       else {
+        place.favorited = false;
         const updateList = newPlace.filter(x => x.id != place.id);
         await AsyncStorage.setItem('places', JSON.stringify(updateList))
         .then( ()=>{
@@ -68,10 +69,9 @@ export default () => {
         .catch( ()=>{
           console.log('erro ao salvar o lugar.');
         });
-        setFavorited(!favorited)
       }
     }
-    setFavorited(!favorited)
+    setFavorited(!favorited);
   };
   return (
     <Container>
@@ -102,8 +102,8 @@ export default () => {
             </PlaceInfoContent>
             <PlaceFavoriteIcon onPress={() => handleFavoriteClick()}>
               {favorited || place.favorited ?
-              <FavoriteFullIcon width='24' height='24' fill='#ff0000'/> :
-              <FavoriteIcon width='24' height='24' fill='#ff0000'/>
+                <FavoriteFullIcon width='24' height='24' fill='#ff0000'/> :
+                <FavoriteIcon width='24' height='24' fill='#ff0000'/>
               }
             
           </PlaceFavoriteIcon>
