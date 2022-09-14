@@ -59,6 +59,17 @@ export default () => {
         });
         setFavorited(!favorited)
       }
+      else {
+        const updateList = newPlace.filter(x => x.id != place.id);
+        await AsyncStorage.setItem('places', JSON.stringify(updateList))
+        .then( ()=>{
+          console.log('salvo com sucesso');
+        })
+        .catch( ()=>{
+          console.log('erro ao salvar o lugar.');
+        });
+        setFavorited(!favorited)
+      }
     }
     setFavorited(!favorited)
   };
