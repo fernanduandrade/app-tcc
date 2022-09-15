@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: #9D40F2;
+  background-color: #EFEFF1;
   align-items: center;
 `;
 
@@ -20,7 +20,7 @@ export const Search = styled.TouchableOpacity`
 export const SearchArea = styled.View`
   border-radius: 30px;
   height: 60px;
-  background-color: #8910FF;
+  background-color: #FFFFFF;
   flex-direction: row;
   align-items: center;
   padding-left: 20px;
@@ -31,7 +31,7 @@ export const SearchArea = styled.View`
 export const SearchInput = styled.TextInput`
   flex: 1;
   font-size: 16px;
-  color: #ffffff;
+  color: #000000;
 `;
 
 export const LoadingIcon = styled.ActivityIndicator`

@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: #9D40F2;
+  background-color: #EFEFF1;
 `;
 
 export const Scroller = styled.ScrollView`

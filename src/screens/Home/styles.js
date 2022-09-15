@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
-  background-color: #9D40F2;
+  background-color: #EFEFF1;
   flex: 1;
 `;
 
@@ -20,7 +20,7 @@ export const HeaderTitle = styled.Text`
   width: 250px;
   font-size: 24px;
   font-weight: bold;
-  color: #fff;
+  color: #4F40AF;
 `;
 
 export const SearchButton = styled.TouchableOpacity`
@@ -42,5 +42,5 @@ export const SugestionText = styled.Text`
   width: 250px;
   font-size: 28px;
   font-weight: bold;
-  color: #fff;
+  color: #413E54;
 `;

@@ -22,6 +22,8 @@ export const PlaceContent = styled.View`
 export const PlaceTitle = styled.Text`
   font-size: 18px;
   font-weight: bold;
+  color: #413E53;
+  font-weight: 400;
 `;
 
 export const PlaceButton = styled.View`

@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: #9D40F2;
+  background-color: #EFEFF1;
 `;
 
 export const Scroller = styled.ScrollView`
@@ -26,5 +26,5 @@ export const CategoryArea = styled.View`
 
 export const CategoryText = styled.Text`
   font-size: 18px;
-  color: #000;
+  color: #413E54;
 `;

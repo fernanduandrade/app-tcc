@@ -41,14 +41,14 @@ export default () => {
             value={locationText}
             onChangeText={text => setLocationText(text)}
             placeholder='Pesquise por algum local'
-            placeholderTextColor='#ffffff'
+            placeholderTextColor='#9498AE'
           />
           <Search onPress={() => getFilteredPlaces()}>
-            <SearchIcon width='26' height='26' fill='#ffffff' />
+            <SearchIcon width='26' height='26' fill='#9498AE' />
           </Search>
       </SearchArea>
       <Scroller>
-        {loading && <LoadingIcon size='large' color='#ffffff' />}
+        {loading && <LoadingIcon size='large' color='#9498AE' />}
         {places.map((place, index) => (
           <CardPlace data={place} key={index} />
         ))}

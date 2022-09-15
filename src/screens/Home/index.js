@@ -71,7 +71,7 @@ export default () => {
             Procure por um lugar em Juazeiro do Piauí
           </HeaderTitle>
           <SearchButton onPress={() => navigation.navigate('Search')}>
-            <SearchIcon width='26' height='26' fill='#ffffff' />
+            <SearchIcon width='26' height='26' fill='#9498AE' />
           </SearchButton>
         </Header>
 
