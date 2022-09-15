@@ -13,7 +13,7 @@ export default ({data}) => {
 
   return(
     <Card onPress={() => handleClick()}>
-      <PlaceImg source={{uri: data.img}} />
+      <PlaceImg source={{uri: data.img ? data.img : data.img_links.split(',')[0]}} />
       <PlaceContent>
         <PlaceTitle>{data.title}</PlaceTitle>
         <Stars stars={data.star} />
