@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const TabArea = styled.View`
   height: 60px;
-  background-color: #8910FF;
+  background-color: #ffffff;
   flex-direction: row;
 `;
 
@@ -18,7 +18,6 @@ export const TabItemCenter = styled.TouchableOpacity`
   border-radius: 35px;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-  border: 3px solid #8910FF;
+  background-color: #4F40AF;
   margin-top: -20px;
 `;

@@ -6,7 +6,6 @@ import Stars from '../Stars/index';
 export default ({data}) => {
   
   const { navigate } = useNavigation();
-  console.log(data);
   const handleClick = () => {
     navigate('Place', data);
   }

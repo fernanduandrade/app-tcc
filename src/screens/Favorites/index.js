@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Scroller, ListCard } from './styles';
 import CardPlace from '../../components/CardPlace/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import NoResults from '../../components/NoResults';
 export default () => {
 
   const [places, setPlaces] = useState([]);
@@ -19,9 +19,12 @@ export default () => {
     <Container>
       <Scroller>
         <ListCard>
-          {places.map((place, index) => (
+          { places.length > 0 ?
+            places.map((place, index) => (
             <CardPlace data={place} key={index} />
-          ))}
+            )) : 
+            <NoResults text="não há favoritos"/>
+          }
         </ListCard>
       </Scroller>
     </Container>

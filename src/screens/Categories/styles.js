@@ -7,7 +7,7 @@ export const Container = styled.View`
 
 export const Scroller = styled.ScrollView`
   flex: 1;
-  margin-top: 10px;
+  margin-top: 40px;
 `;
 
 export const Category = styled.TouchableOpacity`
