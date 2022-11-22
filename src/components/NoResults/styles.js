@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const NoResult = styled.View`
   justify-content: center;
   align-items: center;
-  margin-top: 190px;
+  margin-top: 150px;
 `;
 
 

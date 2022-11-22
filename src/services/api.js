@@ -3,7 +3,7 @@ import { PlaceApi } from './PlaceApi';
 import { CategoryApi } from './CategoryApi';
 
 const api = axios.create({
-  baseURL: 'http://ec2-52-90-52-49.compute-1.amazonaws.com/',
+  baseURL: 'http://ec2-3-80-153-204.compute-1.amazonaws.com/',
   headers: { 
     'Content-Type': 'application/json',
   }

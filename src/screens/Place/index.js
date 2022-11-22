@@ -12,13 +12,14 @@ import { randomImg } from '../../utils/handleImgs';
 import formatCoordinates from '../../utils/formatCoordinates';
 import { UserContext } from './../../contexts/UserContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Linking } from 'react-native';
 
 export default () => {
 
   const { goBack } = useNavigation();
   const route = useRoute();
-  
   const [place, setPlace] = useState({
+    contact: route.params.contact,
     id: route.params.id,
     description: route.params.description,
     img_links: Array.isArray(route.params.img_links) ? [] : route.params.img_links.split(','),
@@ -30,7 +31,16 @@ export default () => {
   });
   const [favorited, setFavorited] = useState(place.favorited || false);
   const reducer = useContext(UserContext);
-
+  const openWhatApp = () => {
+    const url = `https://api.whatsapp.com/send?phone=55${place.contact}`;
+    Linking.openURL(url)
+                  .then((data) => {
+                    console.log('WhatsApp Opened');
+                  })
+                  .catch(() => {
+                    alert('Verifique se o WhatApp está instalado no seu dispositivo');
+                  });
+  }
   const handleFavoriteClick = async () => {
     const existingPlaces = await AsyncStorage.getItem('places');
     let newPlace = JSON.parse(existingPlaces);
@@ -111,7 +121,7 @@ export default () => {
           <PlaceInfoDescription>
               {place.description}
           </PlaceInfoDescription>
-          <Contact>
+          <Contact onPress={openWhatApp}>
             <ContactButton>
               <WhatAppIcon width='15' height='15' fill='#ffffff' />
               <ContactText>Whatapp</ContactText>
